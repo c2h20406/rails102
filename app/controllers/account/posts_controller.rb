@@ -3,4 +3,10 @@ class Account::PostsController < ApplicationController
 	def index
 		@posts = current_user.posts
 	end
+
+	def destroy
+		@post.destroy
+		flash[:alert] = "Post deleted"
+		redirect_to group_path(@group)
+	end
 end

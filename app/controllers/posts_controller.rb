@@ -6,6 +6,9 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
+	def edit
+	end
+
 	def create
 		@group = Group.find(params[:group_id])
 		@post = Post.new(post_params)
@@ -17,6 +20,12 @@ class PostsController < ApplicationController
 		else 
 			render :new
 		end
+
+	def destroy
+		@post.destroy
+		flash[:alert] = "Post deleted"
+		redirect_to group_path(@group)
+	end
 end
 
 private
